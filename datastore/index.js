@@ -10,16 +10,16 @@ var items = {};
 exports.create = (text, callback) => {
 
   //var id = counter.getNextUniqueId(callback);
-  counter.getNextUniqueId(function(err, countNum) {
+  counter.getNextUniqueId(function(err, countNumber) {
     if(err) {
       throw err;
     } else {
       // items[id] = text;
-      fs.writeFile(path.join(exports.dataDir, `${countNum}.txt`), text, function(err){
+      fs.writeFile(path.join(exports.dataDir, `${countNumber}.txt`), text, function(err){
         if(err){
           throw err;
         } else{
-          callback(null, {id: countNum, text: text});
+          callback(null, {id: countNumber, text: text});
         }
       });
       
