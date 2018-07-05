@@ -24,6 +24,8 @@ const readCounter = (callback) => {
     }
   });
 };
+//gives you counter number
+
 
 const writeCounter = (count, callback) => {
   var counterString = zeroPaddedNumber(count);
@@ -36,11 +38,37 @@ const writeCounter = (count, callback) => {
   });
 };
 
+
 // Public API - Fix this function //////////////////////////////////////////////
 
-exports.getNextUniqueId = () => {
-  counter = counter + 1;
-  return zeroPaddedNumber(counter);
+
+exports.getNextUniqueId = (callback) => {
+
+  readCounter (function (err, data) {
+    writeCounter(data + 1, function(err, data) {
+      callback(null, data)
+    })
+  })
+  // writeCounter(counter, function(err, apple) {
+  //   if (err) {
+  //     throw ("There is an errrrrorrrrrrrrr");
+  //   } else {
+  //     console.log("All Good Bro")
+  //   }
+  // }) 
+
+  // fs.writeFile('./datastore/data/counter.txt', counter, (err) => {
+  //   if (err) {
+  //     throw err;
+  //   } else {
+  //     console.log('test')
+  //   }
+  // })
+  // console.log(counter, "Counter=====================")
+
+
+  // counter = counter + 1;
+  // return zeroPaddedNumber(counter);
 };
 
 
